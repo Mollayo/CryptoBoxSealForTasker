@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" formatted="false">CryptoBoxSeal for Tasker</string>
+    <string name="setup" formatted="false">You\'re all setup and ready to rock!\n\nCryptoBoxSeal for Tasker will now show up as a Plugin within Tasker when adding a new action</string>
+    <string name="plugin_name">CryptoBoxSeal</string>
+    <string name="message_to_encode_hint">Message to encode or decode</string>
+    <string name="public_key_hint">Public key</string>
+    <string name="private_key_hint">Private key</string>
+    <string name="result_var_name_hint">The variable to return the result</string>
+</resources>
