@@ -1,23 +1,22 @@
 package me.lebob.cryptoboxsealfortasker;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
+import me.lebob.cryptoboxsealfortasker.utils.ActionBundleManager;
 import me.lebob.cryptoboxsealfortasker.utils.BundleScrubber;
 import me.lebob.cryptoboxsealfortasker.utils.Constants;
-import me.lebob.cryptoboxsealfortasker.utils.ActionBundleManager;
 import me.lebob.cryptoboxsealfortasker.utils.TaskerPlugin;
-
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
 
 
 public class ActionPluginActivity extends AppCompatActivity {
@@ -36,20 +35,12 @@ public class ActionPluginActivity extends AppCompatActivity {
         if (isBundleValid(previousBundle) && previousBlurb!=null)
             onPostCreateWithPreviousResult(previousBundle,previousBlurb);
 
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.doEncode);
-        radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId)
-            {
-                updateWidgetVisibility(checkedId);
-            }
-        });
+        RadioGroup radioGroup = findViewById(R.id.doEncode);
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> updateWidgetVisibility(checkedId));
     }
 
     private void updateWidgetVisibility(int checkedId)
     {
-        EditText msgToEncodeOrDecode=findViewById(R.id.msgToEncodeOrDecode);
         EditText privateKey=findViewById(R.id.privateKey);
         // checkedId is the RadioButton selected
         if (checkedId==R.id.cryptoBoxSeal) {
@@ -109,9 +100,7 @@ public class ActionPluginActivity extends AppCompatActivity {
 
         int val = ((RadioGroup)findViewById(R.id.doEncode)).getCheckedRadioButtonId();
         int doEncode=1;
-        if (val==R.id.cryptoBoxSeal)
-            doEncode=1;
-        else if (val==R.id.cryptoBoxSealOpen)
+        if (val==R.id.cryptoBoxSealOpen)
             doEncode=0;
 
         Bundle bundle = ActionBundleManager.generateBundle(doEncode, msgToEncodeOrDecode, publicKey, privateKey, resultVarName);

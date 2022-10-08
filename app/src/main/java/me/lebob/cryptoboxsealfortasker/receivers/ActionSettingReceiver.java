@@ -65,7 +65,7 @@ public class ActionSettingReceiver  extends BroadcastReceiver {
 
         int res;
 
-        Boolean success=true;
+        boolean success=true;
         String resultStr="";
         try {
             if (doEncode==1)
