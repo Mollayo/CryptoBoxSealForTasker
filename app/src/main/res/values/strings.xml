@@ -6,4 +6,6 @@
     <string name="public_key_hint">Public key</string>
     <string name="private_key_hint">Private key</string>
     <string name="result_var_name_hint">The variable to return the result</string>
+    <string name="cryptoboxseal">CryptoBoxSeal</string>
+    <string name="cryptoboxsealopen">CryptoBoxSealOpen</string>
 </resources>
